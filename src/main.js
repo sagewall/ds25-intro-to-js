@@ -1,9 +1,7 @@
 import * as reactiveUtils from "@arcgis/core/core/reactiveUtils";
 import "@arcgis/map-components/components/arcgis-feature-table";
 import "@arcgis/map-components/components/arcgis-layer-list";
-import "@arcgis/map-components/components/arcgis-legend";
 import "@arcgis/map-components/components/arcgis-map";
-import "@arcgis/map-components/components/arcgis-scene";
 import "@esri/calcite-components/components/calcite-shell";
 import "./style.css";
 
