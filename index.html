@@ -7,9 +7,17 @@
     <title>Vite App</title>
   </head>
   <body>
-    <arcgis-map item-id="ef2644781da844648e8bb30ab52a02bc">
-      <arcgis-layer-list position="top-right"></arcgis-layer-list>
-    </arcgis-map>
+    <calcite-shell>
+      <arcgis-map item-id="ef2644781da844648e8bb30ab52a02bc">
+        <arcgis-layer-list
+          position="top-right"
+          selection-mode="single"
+        ></arcgis-layer-list>
+      </arcgis-map>
+      <arcgis-feature-table
+        reference-element="arcgis-map"
+      ></arcgis-feature-table>
+    </calcite-shell>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
