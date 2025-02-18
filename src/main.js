@@ -13,9 +13,7 @@ handleArcgisLayerListReady();
 async function handleArcgisLayerListReady() {
   await arcgisLayerList.componentOnReady();
   arcgisLayerList.listItemCreatedFunction = (event) => {
-    const { item } = event;
-
-    item.panel = {
+    event.item.panel = {
       content: "legend",
       open: true,
     };
