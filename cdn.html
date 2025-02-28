@@ -23,14 +23,51 @@
       type="module"
       src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"
     ></script>
+    <style>
+      #map,
+      #feature-table {
+        height: 50%;
+      }
+    </style>
   </head>
   <body>
     <calcite-shell>
-      <arcgis-map item-id="237b9584339446a0b56317b5962a4971">
-        <arcgis-zoom position="top-left"></arcgis-zoom>
-        <arcgis-layer-list position="top-right"></arcgis-layer-list>
-        <arcgis-legend position="bottom-left"></arcgis-legend
-      ></arcgis-map>
+      <arcgis-map id="map" item-id="237b9584339446a0b56317b5962a4971">
+        <arcgis-layer-list
+          id="layer-list"
+          position="top-right"
+          selection-mode="single"
+        ></arcgis-layer-list>
+      </arcgis-map>
+      <arcgis-feature-table
+        id="feature-table"
+        reference-element="arcgis-map"
+      ></arcgis-feature-table>
     </calcite-shell>
+    <script>
+      require(["esri/core/reactiveUtils"], (reactiveUtils) => {
+        const arcgisLayerList = document.querySelector("#layer-list");
+        const arcgisFeatureTable = document.querySelector("#feature-table");
+
+        arcgisLayerList.listItemCreatedFunction = (event) => {
+          event.item.panel = {
+            content: "legend",
+            open: true,
+          };
+        };
+
+        handleArcgisLayerListReady();
+
+        async function handleArcgisLayerListReady() {
+          await arcgisLayerList.componentOnReady();
+          reactiveUtils.watch(
+            () => arcgisLayerList.selectedItems.getItemAt(0),
+            (item) => {
+              arcgisFeatureTable.layer = item.layer;
+            }
+          );
+        }
+      });
+    </script>
   </body>
 </html>
