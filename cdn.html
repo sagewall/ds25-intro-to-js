@@ -44,7 +44,7 @@
         reference-element="arcgis-map"
       ></arcgis-feature-table>
     </calcite-shell>
-    <script>
+    <script type="module">
       require(["esri/core/reactiveUtils"], (reactiveUtils) => {
         const arcgisLayerList = document.querySelector("#layer-list");
         const arcgisFeatureTable = document.querySelector("#feature-table");
