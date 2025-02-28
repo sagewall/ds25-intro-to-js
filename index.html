@@ -8,14 +8,15 @@
   </head>
   <body>
     <calcite-shell>
-      <arcgis-map item-id="237b9584339446a0b56317b5962a4971">
-        <arcgis-zoom position="top-left"></arcgis-zoom>
+      <arcgis-map id="map" item-id="237b9584339446a0b56317b5962a4971">
         <arcgis-layer-list
+          id="layer-list"
           position="top-right"
           selection-mode="single"
         ></arcgis-layer-list>
       </arcgis-map>
       <arcgis-feature-table
+        id="feature-table"
         reference-element="arcgis-map"
       ></arcgis-feature-table>
     </calcite-shell>

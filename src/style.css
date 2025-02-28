@@ -2,7 +2,7 @@
 @import "@arcgis/map-components/arcgis-map-components/arcgis-map-components.css";
 @import "@esri/calcite-components/calcite/calcite.css";
 
-arcgis-map,
-arcgis-feature-table {
-  flex: 1;
+#map,
+#feature-table {
+  height: 50%;
 }
