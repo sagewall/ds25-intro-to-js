@@ -5,23 +5,23 @@ import "@arcgis/map-components/components/arcgis-map";
 import "@esri/calcite-components/components/calcite-shell";
 import "./style.css";
 
-const arcgisLayerList = document.getElementById("layer-list");
-const arcgisFeatureTable = document.getElementById("feature-table");
+const layerList = document.getElementById("layer-list");
+const featureTable = document.getElementById("feature-table");
 
-arcgisLayerList.listItemCreatedFunction = (event) => {
+layerList.listItemCreatedFunction = (event) => {
   event.item.panel = {
     content: "legend"
   };
 };
 
-async function handleArcgisLayerListReady() {
-  await arcgisLayerList.componentOnReady();
+async function handlelLayerListReady() {
+  await layerList.componentOnReady();
   reactiveUtils.watch(
-    () => arcgisLayerList.selectedItems.getItemAt(0),
+    () => layerList.selectedItems.getItemAt(0),
     (item) => {
-      arcgisFeatureTable.layer = item.layer;
+      featureTable.layer = item.layer;
     }
   );
 }
 
-handleArcgisLayerListReady();
+handlelLayerListReady();
