@@ -55,8 +55,8 @@
 		],
 		"description": "Insert ArcGIS CSS imports"
 	},
-	"ArcGIS Map Styles": {
-		"prefix": "dCSSStyles",
+	"HTML Body Styles": {
+		"prefix": "dCSSHTMLBodyStyles",
 		"body": [
 			"html,",
 			"body {",
@@ -67,7 +67,7 @@
 		"description": "Snippet for ArcGIS map styles"
 	},
 	"ArcGIS Map": {
-		"prefix": "dMap",
+		"prefix": "dMapElement",
 		"body": [
 			"<arcgis-map id=\"map\" item-id=\"237b9584339446a0b56317b5962a4971\"></arcgis-map>"
 		],
@@ -81,21 +81,35 @@
 		"description": "Import the Map component"
 	},
 	"ArcGIS Layer List": {
-		"prefix": "dLayerList",
+		"prefix": "dLayerListElement",
 		"body": [
 			"<arcgis-layer-list id=\"layer-list\" position=\"top-right\"></arcgis-layer-list>"
 		],
 		"description": "Insert an ArcGIS layer list"
 	},
+	"Import Layer List": {
+		"prefix": "dImportLayerList",
+		"body": [
+			"import \"@arcgis/map-components/components/arcgis-layer-list\";"
+		],
+		"description": "Import the Layer List component"
+	},
 	"ArcGIS Legend": {
-		"prefix": "dLegend",
+		"prefix": "dLegendElement",
 		"body": [
 			"<arcgis-legend id=\"legend\" position=\"bottom-left\"></arcgis-legend>"
 		],
 		"description": "Insert an ArcGIS legend"
 	},
+	"Import Legend": {
+		"prefix": "dImportLegend",
+		"body": [
+			"import \"@arcgis/map-components/components/arcgis-legend\";"
+		],
+		"description": "Import the Legend component"
+	},
 	"Query ArcGIS Layer List": {
-		"prefix": "dQueryLayerList",
+		"prefix": "dLayerListQuery",
 		"body": [
 			"const arcgisLayerList = document.querySelector(\"#layer-list\");"
 		],
@@ -121,7 +135,7 @@
 		"description": "Import the calcite shell"
 	},
 	"Add Feature Table": {
-		"prefix": "dFeatureTable",
+		"prefix": "dFeatureTableElement",
 		"body": [
 			"<arcgis-feature-table",
 			"  id=\"feature-table\"",
@@ -137,6 +151,16 @@
 		],
 		"description": "Add selection mode to layer list"
 	},
+	"Map and Feature Table Styles": {
+		"prefix": "dCSSMapFeatureTableStyles",
+		"body": [
+			"#map,",
+			"#feature-table {",
+			"  height: 50%;",
+			"}"
+		],
+		"description": "Insert styles for map and feature table"
+	},
 	"Import ArcGIS Feature Table": {
 		"prefix": "dImportFeatureTable",
 		"body": [
@@ -151,11 +175,16 @@
 		],
 		"description": "Query the ArcGIS feature table element"
 	},
+	"Import Reactive Utils": {
+		"prefix": "dImportReactiveUtils",
+		"body": [
+			"import * as reactiveUtils from \"@arcgis/core/core/reactiveUtils\";"
+		],
+		"description": "Import reactiveUtils from ArcGIS core"
+	},
 	"Open selected Layer List item in the Feature Table": {
 		"prefix": "dWatchSelectedItems",
 		"body": [
-			"handleArcgisLayerListReady();",
-			"",
 			"async function handleArcgisLayerListReady() {",
 			"  await arcgisLayerList.componentOnReady();",
 			"  reactiveUtils.watch(",
@@ -164,7 +193,9 @@
 			"      arcgisFeatureTable.layer = item.layer;",
 			"    }",
 			"  );",
-			"}"
+			"}",
+			"",
+			"handleArcgisLayerListReady();"
 		],
 		"description": "Open selected Layer List item in the Feature Table"
 	}

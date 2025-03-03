@@ -15,8 +15,6 @@ arcgisLayerList.listItemCreatedFunction = (event) => {
   };
 };
 
-handleArcgisLayerListReady();
-
 async function handleArcgisLayerListReady() {
   await arcgisLayerList.componentOnReady();
   reactiveUtils.watch(
@@ -26,3 +24,5 @@ async function handleArcgisLayerListReady() {
     }
   );
 }
+
+handleArcgisLayerListReady();
