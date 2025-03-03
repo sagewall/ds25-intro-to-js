@@ -5,8 +5,8 @@ import "@arcgis/map-components/components/arcgis-map";
 import "@esri/calcite-components/components/calcite-shell";
 import "./style.css";
 
-const arcgisLayerList = document.querySelector("#layer-list");
-const arcgisFeatureTable = document.querySelector("#feature-table");
+const arcgisLayerList = document.getElementById("layer-list");
+const arcgisFeatureTable = document.getElementById("feature-table");
 
 arcgisLayerList.listItemCreatedFunction = (event) => {
   event.item.panel = {
