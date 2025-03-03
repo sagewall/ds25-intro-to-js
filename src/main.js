@@ -10,8 +10,7 @@ const arcgisFeatureTable = document.querySelector("#feature-table");
 
 arcgisLayerList.listItemCreatedFunction = (event) => {
   event.item.panel = {
-    content: "legend",
-    open: true,
+    content: "legend"
   };
 };
 
