@@ -28,10 +28,8 @@
 	"ArcGIS Embedded Map": {
 		"prefix": "dEmbedMap",
 		"body": [
-			"<!-- Add custom element to <body> of your page -->",
-			"<!-- Note: a height of 600px as a minimum is ideal -->",
 			"<arcgis-embedded-map",
-			"  style=\"height: 600px; width: 800px\"",
+			"  style=\"height: 300px; width: 400px\"",
 			"  item-id=\"237b9584339446a0b56317b5962a4971\"",
 			"  legend-enabled",
 			">",
@@ -74,25 +72,11 @@
 		"description": "Insert an ArcGIS map with a layer list and legend"
 	},
 	"Import Map": {
-		"prefix": "dImportMap",
+		"prefix": "dMapImport",
 		"body": [
 			"import \"@arcgis/map-components/components/arcgis-map\";"
 		],
 		"description": "Import the Map component"
-	},
-	"ArcGIS Layer List": {
-		"prefix": "dLayerListElement",
-		"body": [
-			"<arcgis-layer-list id=\"layer-list\" position=\"top-right\"></arcgis-layer-list>"
-		],
-		"description": "Insert an ArcGIS layer list"
-	},
-	"Import Layer List": {
-		"prefix": "dImportLayerList",
-		"body": [
-			"import \"@arcgis/map-components/components/arcgis-layer-list\";"
-		],
-		"description": "Import the Layer List component"
 	},
 	"ArcGIS Legend": {
 		"prefix": "dLegendElement",
@@ -102,33 +86,50 @@
 		"description": "Insert an ArcGIS legend"
 	},
 	"Import Legend": {
-		"prefix": "dImportLegend",
+		"prefix": "dLegendImport",
 		"body": [
 			"import \"@arcgis/map-components/components/arcgis-legend\";"
 		],
 		"description": "Import the Legend component"
 	},
-	"Query ArcGIS Layer List": {
-		"prefix": "dLayerListQuery",
+	"ArcGIS Layer List": {
+		"prefix": "dLayerListElement",
 		"body": [
-			"const arcgisLayerList = document.querySelector(\"#layer-list\");"
+			"<arcgis-layer-list id=\"layer-list\" position=\"top-right\"></arcgis-layer-list>"
 		],
-		"description": "Query the ArcGIS layer list element"
+		"description": "Insert an ArcGIS layer list"
 	},
-	"Add the listItemCreatedFunction": {
+	"Import Layer List": {
+		"prefix": "dLayerListImport",
+		"body": [
+			"import \"@arcgis/map-components/components/arcgis-layer-list\";"
+		],
+		"description": "Import the Layer List component"
+	},
+	"Get ArcGIS Layer List": {
+		"prefix": "dGetLayerList",
+		"body": [
+			"// Get a reference to the layer list element",
+			"const layerList = document.getElementById(\"layer-list\");"
+		],
+		"description": "Get the ArcGIS layer list element"
+	},
+	"listItemCreatedFunction": {
 		"prefix": "dListItemCreatedFunction",
 		"body": [
-			"arcgisLayerList.listItemCreatedFunction = (event) => {",
+			"// Set the listItemCreatedFunction to add a legend to each item in the layer list",
+			"// This function is called each time a new item is created in the layer list",
+			"layerList.listItemCreatedFunction = (event) => {",
+			"  // Set the list item panel's content to be a legend",
 			"  event.item.panel = {",
-			"    content: \"legend\",",
-			"    open: true,",
+			"    content: \"legend\"",
 			"  };",
 			"};"
 		],
-		"description": "Add the Legend to the Layer List"
+		"description": "Set the listItemCreatedFunction to add a legend to each item in the layer list"
 	},
 	"Calcite shell import": {
-		"prefix": "dImportCalciteShell",
+		"prefix": "dCalciteShellImport",
 		"body": [
 			"import \"@esri/calcite-components/components/calcite-shell\";"
 		],
@@ -143,6 +144,21 @@
 			"></arcgis-feature-table>"
 		],
 		"description": "Add a Feature Table"
+	},
+	"Get Feature Table Element": {
+		"prefix": "dGetFeatureTableElement",
+		"body": [
+			"// Get a reference to the feature table element",
+			"const featureTable = document.getElementById(\"feature-table\");"
+		],
+		"description": "Get a reference to the feature table element"
+	},
+	"Import ArcGIS Feature Table": {
+		"prefix": "dFeatureTableImport",
+		"body": [
+			"import \"@arcgis/map-components/components/arcgis-feature-table\";"
+		],
+		"description": "Snippet for importing ArcGIS Feature Table component"
 	},
 	"Add selection mode": {
 		"prefix": "dSelectionMode",
@@ -161,42 +177,37 @@
 		],
 		"description": "Insert styles for map and feature table"
 	},
-	"Import ArcGIS Feature Table": {
-		"prefix": "dImportFeatureTable",
-		"body": [
-			"import \"@arcgis/map-components/components/arcgis-feature-table\";"
-		],
-		"description": "Snippet for importing ArcGIS Feature Table component"
-	},
-	"Query ArcGIS Feature Table": {
-		"prefix": "dQueryFeatureTable",
-		"body": [
-			"const arcgisFeatureTable = document.querySelector(\"#feature-table\");"
-		],
-		"description": "Query the ArcGIS feature table element"
-	},
 	"Import Reactive Utils": {
-		"prefix": "dImportReactiveUtils",
+		"prefix": "dReactiveUtilsImport",
 		"body": [
 			"import * as reactiveUtils from \"@arcgis/core/core/reactiveUtils\";"
 		],
 		"description": "Import reactiveUtils from ArcGIS core"
 	},
-	"Open selected Layer List item in the Feature Table": {
-		"prefix": "dWatchSelectedItems",
+	"initLayerWatchFunction": {
+		"prefix": "dInitLayerWatch",
 		"body": [
-			"async function handleArcgisLayerListReady() {",
-			"  await arcgisLayerList.componentOnReady();",
+			"// A function to watch the selected layer in the layer list",
+			"// and set the layer of the feature table to the selected layer",
+			"async function initLayerWatch() {",
+			"  // Wait for the layer list component to be ready",
+			"  await layerList.componentOnReady();",
 			"  reactiveUtils.watch(",
-			"    () => arcgisLayerList.selectedItems.getItemAt(0),",
+			"    // A function that returns the value to watch",
+			"    // In this case, the first selected item in the layer list",
+			"    () => layerList.selectedItems.getItemAt(0),",
+			"",
+			"    // A function that runs when the value above changes",
+			"    // In this case, set the layer of the feature table to the selected item's layer",
 			"    (item) => {",
-			"      arcgisFeatureTable.layer = item.layer;",
+			"      featureTable.layer = item.layer;",
 			"    }",
 			"  );",
 			"}",
 			"",
-			"handleArcgisLayerListReady();"
+			"// Call the initLayerWatch function to watch the selected layer in the layer list",
+			"initLayerWatch();"
 		],
-		"description": "Open selected Layer List item in the Feature Table"
+		"description": "A function to watch the selected layer in the layer list and set the layer of the feature table to the selected layer"
 	}
 }
