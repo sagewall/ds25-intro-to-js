@@ -22,7 +22,7 @@ layerList.listItemCreatedFunction = (event) => {
 
 // A function to watch the selected layer in the layer list
 // and set the layer of the feature table to the selected layer
-async function initLayerWatch() {
+async function setupLayerList() {
   // Wait for the layer list component to be ready
   await layerList.componentOnReady();
   reactiveUtils.watch(
@@ -38,5 +38,5 @@ async function initLayerWatch() {
   );
 }
 
-// Call the initLayerWatch function to watch the selected layer in the layer list
-initLayerWatch();
+// Call the setupLayerList function to watch the selected layer in the layer list
+setupLayerList();
