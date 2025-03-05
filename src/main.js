@@ -11,6 +11,9 @@ const layerList = document.getElementById("layer-list");
 // Get a reference to the feature table element
 const featureTable = document.getElementById("feature-table");
 
+// Set the showHeading property to true
+layerList.showHeading = true;
+
 // Set the listItemCreatedFunction to add a legend to each item in the layer list
 // This function is called each time a new item is created in the layer list
 layerList.listItemCreatedFunction = (event) => {

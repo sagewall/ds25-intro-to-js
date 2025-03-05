@@ -42,7 +42,14 @@
 		"body": [
 			"237b9584339446a0b56317b5962a4971"
 		],
-		"description": "Insert an ArcGIS embedded map"
+		"description": "Item ID for the parks and trails map"
+	},
+	"Backup Map Item ID": {
+		"prefix": "dBackupItemId",
+		"body": [
+			"ef2644781da844648e8bb30ab52a02bc"
+		],
+		"description": "Backup Item ID for the bigfoot and ufo map"
 	},
 	"ArcGIS CSS Imports": {
 		"prefix": "dCSSImports",
@@ -95,7 +102,11 @@
 	"ArcGIS Layer List": {
 		"prefix": "dLayerListElement",
 		"body": [
-			"<arcgis-layer-list id=\"layer-list\" position=\"top-right\"></arcgis-layer-list>"
+			"<arcgis-layer-list",
+			"  id=\"layer-list\"",
+			"  position=\"top-right\"",
+			"  selection-mode=\"single\"",
+			"></arcgis-layer-list>"
 		],
 		"description": "Insert an ArcGIS layer list"
 	},
@@ -113,6 +124,14 @@
 			"const layerList = document.getElementById(\"layer-list\");"
 		],
 		"description": "Get the ArcGIS layer list element"
+	},
+	"showHeading": {
+		"prefix": "dShowHeading",
+		"body": [
+			"// Set the showHeading property to true",
+			"layerList.showHeading = true;"
+		],
+		"description": "Set the listItemCreatedFunction to add a legend to each item in the layer list"
 	},
 	"listItemCreatedFunction": {
 		"prefix": "dListItemCreatedFunction",
@@ -185,11 +204,11 @@
 		"description": "Import reactiveUtils from ArcGIS core"
 	},
 	"initLayerWatchFunction": {
-		"prefix": "dInitLayerWatch",
+		"prefix": "dSetupLayerList",
 		"body": [
 			"// A function to watch the selected layer in the layer list",
 			"// and set the layer of the feature table to the selected layer",
-			"async function initLayerWatch() {",
+			"async function setupLayerList() {",
 			"  // Wait for the layer list component to be ready",
 			"  await layerList.componentOnReady();",
 			"  reactiveUtils.watch(",
@@ -205,8 +224,8 @@
 			"  );",
 			"}",
 			"",
-			"// Call the initLayerWatch function to watch the selected layer in the layer list",
-			"initLayerWatch();"
+			"// Call the setupLayerList function to watch the selected layer in the layer list",
+			"setupLayerList();"
 		],
 		"description": "A function to watch the selected layer in the layer list and set the layer of the feature table to the selected layer"
 	}
