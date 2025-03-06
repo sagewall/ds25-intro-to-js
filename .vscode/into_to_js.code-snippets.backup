@@ -15,28 +15,6 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"ArcGIS Embeddable Components Script": {
-		"prefix": "dEmbedScript",
-		"body": [
-			"<script",
-			"  type=\"module\"",
-			"  src=\"https://js.arcgis.com/embeddable-components/4.32/arcgis-embeddable-components.esm.js\"",
-			"></script>"
-		],
-		"description": "Insert ArcGIS embeddable components script"
-	},
-	"ArcGIS Embedded Map": {
-		"prefix": "dEmbedMap",
-		"body": [
-			"<arcgis-embedded-map",
-			"  style=\"height: 300px; width: 400px\"",
-			"  item-id=\"237b9584339446a0b56317b5962a4971\"",
-			"  legend-enabled",
-			">",
-			"</arcgis-embedded-map>"
-		],
-		"description": "Insert an ArcGIS embedded map"
-	},
 	"Map Item ID": {
 		"prefix": "dItemId",
 		"body": [
@@ -45,11 +23,18 @@
 		"description": "Item ID for the parks and trails map"
 	},
 	"Backup Map Item ID": {
-		"prefix": "dBackupItemId",
+		"prefix": "dItemIdBackup",
 		"body": [
 			"ef2644781da844648e8bb30ab52a02bc"
 		],
 		"description": "Backup Item ID for the bigfoot and ufo map"
+	},
+	"ArcGIS Map": {
+		"prefix": "dMapElement",
+		"body": [
+			"<arcgis-map id=\"map\" item-id=\"237b9584339446a0b56317b5962a4971\"></arcgis-map>"
+		],
+		"description": "Insert an ArcGIS map with a layer list and legend"
 	},
 	"ArcGIS CSS Imports": {
 		"prefix": "dCSSImports",
@@ -59,6 +44,13 @@
 			"@import \"@esri/calcite-components/calcite/calcite.css\";"
 		],
 		"description": "Insert ArcGIS CSS imports"
+	},
+	"Import Map": {
+		"prefix": "dMapImport",
+		"body": [
+			"import \"@arcgis/map-components/components/arcgis-map\";"
+		],
+		"description": "Import the Map component"
 	},
 	"HTML Body Styles": {
 		"prefix": "dCSSHTMLBodyStyles",
@@ -71,44 +63,12 @@
 		],
 		"description": "Snippet for ArcGIS map styles"
 	},
-	"ArcGIS Map": {
-		"prefix": "dMapElement",
+	"Import Calcite Shell": {
+		"prefix": "dCalciteShellImport",
 		"body": [
-			"<arcgis-map id=\"map\" item-id=\"237b9584339446a0b56317b5962a4971\"></arcgis-map>"
+			"import \"@esri/calcite-components/components/calcite-shell\";"
 		],
-		"description": "Insert an ArcGIS map with a layer list and legend"
-	},
-	"Import Map": {
-		"prefix": "dMapImport",
-		"body": [
-			"import \"@arcgis/map-components/components/arcgis-map\";"
-		],
-		"description": "Import the Map component"
-	},
-	"ArcGIS Legend": {
-		"prefix": "dLegendElement",
-		"body": [
-			"<arcgis-legend id=\"legend\" position=\"bottom-left\"></arcgis-legend>"
-		],
-		"description": "Insert an ArcGIS legend"
-	},
-	"Import Legend": {
-		"prefix": "dLegendImport",
-		"body": [
-			"import \"@arcgis/map-components/components/arcgis-legend\";"
-		],
-		"description": "Import the Legend component"
-	},
-	"ArcGIS Layer List": {
-		"prefix": "dLayerListElement",
-		"body": [
-			"<arcgis-layer-list",
-			"  id=\"layer-list\"",
-			"  position=\"top-right\"",
-			"  selection-mode=\"single\"",
-			"></arcgis-layer-list>"
-		],
-		"description": "Insert an ArcGIS layer list"
+		"description": "Import the calcite shell"
 	},
 	"Import Layer List": {
 		"prefix": "dLayerListImport",
@@ -117,13 +77,25 @@
 		],
 		"description": "Import the Layer List component"
 	},
-	"Get ArcGIS Layer List": {
+	"Add Layer List": {
+		"prefix": "dLayerListElement",
+		"body": [
+			"<arcgis-layer-list",
+			"  id=\"layer-list\"",
+			"  position=\"top-right\"",
+			"  show-heading",
+			"  selection-mode=\"single\"",
+			"></arcgis-layer-list>"
+		],
+		"description": "Insert an ArcGIS layer list"
+	},
+	"Get Layer List reference": {
 		"prefix": "dGetLayerList",
 		"body": [
 			"// Get a reference to the layer list element",
 			"const layerList = document.getElementById(\"layer-list\");"
 		],
-		"description": "Get the ArcGIS layer list element"
+		"description": "Get the layer list element"
 	},
 	"showHeading": {
 		"prefix": "dShowHeading",
@@ -131,28 +103,14 @@
 			"// Set the showHeading property to true",
 			"layerList.showHeading = true;"
 		],
-		"description": "Set the listItemCreatedFunction to add a legend to each item in the layer list"
+		"description": "Show the Layer List heading"
 	},
-	"listItemCreatedFunction": {
-		"prefix": "dListItemCreatedFunction",
+	"Import ArcGIS Feature Table": {
+		"prefix": "dFeatureTableImport",
 		"body": [
-			"// Set the listItemCreatedFunction to add a legend to each item in the layer list",
-			"// This function is called each time a new item is created in the layer list",
-			"layerList.listItemCreatedFunction = (event) => {",
-			"  // Set the list item panel's content to be a legend",
-			"  event.item.panel = {",
-			"    content: \"legend\"",
-			"  };",
-			"};"
+			"import \"@arcgis/map-components/components/arcgis-feature-table\";"
 		],
-		"description": "Set the listItemCreatedFunction to add a legend to each item in the layer list"
-	},
-	"Calcite shell import": {
-		"prefix": "dCalciteShellImport",
-		"body": [
-			"import \"@esri/calcite-components/components/calcite-shell\";"
-		],
-		"description": "Import the calcite shell"
+		"description": "Snippet for importing ArcGIS Feature Table component"
 	},
 	"Add Feature Table": {
 		"prefix": "dFeatureTableElement",
@@ -164,28 +122,6 @@
 		],
 		"description": "Add a Feature Table"
 	},
-	"Get Feature Table Element": {
-		"prefix": "dGetFeatureTableElement",
-		"body": [
-			"// Get a reference to the feature table element",
-			"const featureTable = document.getElementById(\"feature-table\");"
-		],
-		"description": "Get a reference to the feature table element"
-	},
-	"Import ArcGIS Feature Table": {
-		"prefix": "dFeatureTableImport",
-		"body": [
-			"import \"@arcgis/map-components/components/arcgis-feature-table\";"
-		],
-		"description": "Snippet for importing ArcGIS Feature Table component"
-	},
-	"Add selection mode": {
-		"prefix": "dSelectionMode",
-		"body": [
-			"selection-mode=\"single\""
-		],
-		"description": "Add selection mode to layer list"
-	},
 	"Map and Feature Table Styles": {
 		"prefix": "dCSSMapFeatureTableStyles",
 		"body": [
@@ -196,6 +132,14 @@
 		],
 		"description": "Insert styles for map and feature table"
 	},
+	"Get Feature Table reference": {
+		"prefix": "dGetFeatureTable",
+		"body": [
+			"// Get a reference to the feature table element",
+			"const featureTable = document.getElementById(\"feature-table\");"
+		],
+		"description": "Get the feature table element"
+	},
 	"Import Reactive Utils": {
 		"prefix": "dReactiveUtilsImport",
 		"body": [
@@ -203,7 +147,7 @@
 		],
 		"description": "Import reactiveUtils from ArcGIS core"
 	},
-	"initLayerWatchFunction": {
+	"Setup the layer list": {
 		"prefix": "dSetupLayerList",
 		"body": [
 			"// A function to watch the selected layer in the layer list",
