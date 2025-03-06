@@ -11,8 +11,8 @@ const layerList = document.getElementById("layer-list");
 // Get a reference to the feature table element
 const featureTable = document.getElementById("feature-table");
 
-// Set the showHeading property to true
-layerList.showHeading = true;
+// Set the selectionMode property to "single"
+layerList.selectionMode = "single";
 
 // A function to watch the selected layer in the layer list
 // and set the layer of the feature table to the selected layer

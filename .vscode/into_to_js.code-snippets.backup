@@ -32,7 +32,10 @@
 	"ArcGIS Map": {
 		"prefix": "dMapElement",
 		"body": [
-			"<arcgis-map id=\"map\" item-id=\"237b9584339446a0b56317b5962a4971\"></arcgis-map>"
+			"<arcgis-map",
+			"  id=\"map\"",
+			"  item-id=\"237b9584339446a0b56317b5962a4971\"",
+			"></arcgis-map>"
 		],
 		"description": "Insert an ArcGIS map with a layer list and legend"
 	},
@@ -97,13 +100,13 @@
 		],
 		"description": "Get the layer list element"
 	},
-	"showHeading": {
-		"prefix": "dShowHeading",
+	"Layer List Selection Mode": {
+		"prefix": "dSelectionMode",
 		"body": [
-			"// Set the showHeading property to true",
-			"layerList.showHeading = true;"
+			"// Set the selectionMode property to \"single\"",
+			"layerList.selectionMode = \"single\";"
 		],
-		"description": "Show the Layer List heading"
+		"description": "Set the layer list selection mode"
 	},
 	"Import ArcGIS Feature Table": {
 		"prefix": "dFeatureTableImport",
