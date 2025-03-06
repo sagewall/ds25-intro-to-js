@@ -86,6 +86,7 @@
 			"<arcgis-layer-list",
 			"  id=\"layer-list\"",
 			"  position=\"top-right\"",
+			"  show-collapse-button",
 			"  show-heading",
 			"  selection-mode=\"single\"",
 			"></arcgis-layer-list>"
